@@ -1,35 +1,35 @@
 $(function() {
-	//$(".content_box").html('<div class="photo"><img src="gallery/img/01.jpg" height=100%></div>');
-	var s = [0, 1, 2, 3, 4, 5, 6];
-	
-	function refresh() {
-		for(var i = 0; i < 7; i++) {
-			$(".content_box").append('<div class="photo_container" id="img' + i + '"><img class="photo" src="gallery/img/' + s[i] + '.jpg" height=100%></div>');
-		}
-	}
-	
-	function rArrow() {
-		for(var i = 0; i < 7; i++) {
-			if(s[i] > 14) {
-				s[i] = 0;
+	var counter = 0;
+	const PHOTO_NUM = 16;
+	function refresh(n) {
+		for(var i = 1; i <= 5; i++) {
+			if(n < PHOTO_NUM) {
+				$("#img" + i).attr("src", "gallery/img/" + n + ".jpg");
+				n++;
+			} else {
+				n = 0;
+				$("#img" + i).attr("src", "gallery/img/" + n + ".jpg");
+				n++;
 			}
-			s[i]++;
 		}
-		refresh();
 	}
 	
-	//for(var i = 1; i <= 7; i++) {
-	//	if(i < 10) {
-	//		var path = "0" + i;
-	//		$(".content_box").append('<div class="photo_container" id="img' + i + '"><img class="photo" src="gallery/img/' + path + '.jpg" height=100%></div>');
-	//	} else {
-	//		$(".content_box").append('<div class="photo_container" id="img' + i + '"><img class="photo" src="gallery/img/' + i + '.jpg" height=100%></div>');
-	//	}
-	//}
-	refresh();
+	refresh(counter);
 	
-	//var middle_img = Math.ceil(7 / 2);
-	//$("#img" + middle_img).css("opacity");
-	
-	$(".right_arrow").click(function() { rArrow() });
+	$("#left_arrow").click(function() {
+		if(counter > 0) {
+			counter--;
+		} else {
+			counter = PHOTO_NUM - 1;
+		}
+		refresh(counter);
+	});
+	$("#right_arrow").click(function() {
+		if(counter < PHOTO_NUM - 1) {
+			counter++;
+		} else {
+			counter = 0;
+		}
+		refresh(counter);
+	});
 });

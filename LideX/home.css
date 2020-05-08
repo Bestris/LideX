@@ -81,7 +81,7 @@ a {
 	align-content: center;
 	overflow: hidden;
 }
-.left_arrow {
+#left_arrow {
 	position: absolute;
 	height: 100%;
 	width: 250px;
@@ -90,7 +90,7 @@ a {
 	justify-content: center;
  	align-items: center;
 }
-.right_arrow {
+#right_arrow {
 	position: absolute;
 	height: 100%;
 	width: 250px;
